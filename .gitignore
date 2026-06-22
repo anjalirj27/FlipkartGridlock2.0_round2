@@ -1,0 +1,13 @@
+node_modules/
+.next/
+__pycache__/
+*.pyc
+venv/
+*.log
+.DS_Store
+
+# Large data files - too big for git (CSV exceeds GitHub's 100MB limit) and
+# cache.pkl is pandas-version-specific. Render rebuilds both automatically
+# via build_cache.py (see render.yaml). Run build_cache.py locally too.
+backend/data/violations.csv
+backend/data/cache.pkl

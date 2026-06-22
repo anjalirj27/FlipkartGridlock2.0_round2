@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0B1420;
+  --surface: #121E2E;
+  --surface-2: #16263A;
+  --border: #1F2F44;
+  --text: #EDF1F6;
+  --text-muted: #7C8DA6;
+  --amber: #F2A93C;
+  --coral: #E0524A;
+  --teal: #3FA796;
+  --cyan: #4FA8D8;
+  --purple: #9B7BD4;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 6px 18px -4px rgba(0, 0, 0, 0.3);
+  --sidebar-bg: var(--surface);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+[data-theme="light"] {
+  --bg: #EEF1F6;
+  --surface: #FFFFFF;
+  --surface-2: #E7ECF3;
+  --border: #D7DEE8;
+  --text: #15202E;
+  --text-muted: #5C6B80;
+  --amber: #C97F0E;
+  --coral: #C8423B;
+  --teal: #138068;
+  --cyan: #1873A8;
+  --purple: #6E4FC2;
+  --card-shadow: 0 1px 2px rgba(20, 35, 60, 0.06), 0 6px 20px -4px rgba(20, 35, 60, 0.10);
+  --sidebar-bg: #F8FAFD;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-amber: var(--amber);
+  --color-coral: var(--coral);
+  --color-teal: var(--teal);
+  --color-cyan: var(--cyan);
+  --color-purple: var(--purple);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="light"] body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(242, 169, 60, 0.05), transparent 45%),
+    radial-gradient(circle at 100% 30%, rgba(24, 115, 168, 0.05), transparent 40%);
+}
+
+.card-elevated {
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+[data-theme="light"] .card-elevated:hover {
+  box-shadow: 0 2px 4px rgba(20, 35, 60, 0.08), 0 10px 28px -6px rgba(20, 35, 60, 0.14);
+}
+
+* {
+  border-color: var(--border);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.radar-pulse {
+  animation: radar-pulse 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+@keyframes live-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.live-blink {
+  animation: live-blink 1.6s ease-in-out infinite;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.leaflet-popup-tip {
+  background: var(--surface) !important;
+}
+.leaflet-container {
+  background: #d6dce3 !important;
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Global table cell spacing - prevents column headers/values from
+   touching each other (data tables had no horizontal gap by default) */
+table th,
+table td {
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
+}
+table th:first-child,
+table td:first-child {
+  padding-left: 0;
+}
+table th:last-child,
+table td:last-child {
+  padding-right: 0;
+}

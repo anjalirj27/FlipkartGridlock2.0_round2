@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gridlock-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python build_cache.py"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DATASET_URL
+        value: https://huggingface.co/datasets/anji2705/fghack2/resolve/main/violations.csv?download=true
